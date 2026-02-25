@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrbanCast 도시 Zone 목록</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body data-page="city">
+    <header class="site-header">
+      <div class="container">
+        <a href="./index.html" class="back-link">← Home</a>
+        <h1 id="city-title">도시 Zone 목록</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="filters">
+        <h2 class="visually-hidden">필터</h2>
+        <label>
+          Visibility
+          <select id="visibility-filter">
+            <option value="public">Public only</option>
+            <option value="all">All</option>
+            <option value="web_only">Web-only only</option>
+          </select>
+        </label>
+
+        <label>
+          Tier
+          <select id="tier-filter">
+            <option value="all">All</option>
+            <option value="S">S</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+          </select>
+        </label>
+
+        <label>
+          Search
+          <input id="search-input" type="search" placeholder="Zone 이름 검색" />
+        </label>
+      </section>
+
+      <section>
+        <div class="table-scroll">
+          <table class="zone-table">
+            <thead>
+              <tr>
+                <th>Zone</th>
+                <th>Tier</th>
+                <th>Visibility</th>
+                <th>Restaurants</th>
+                <th>Avg Rating</th>
+                <th>High Rating Ratio</th>
+              </tr>
+            </thead>
+            <tbody id="zone-table-body"></tbody>
+          </table>
+        </div>
+        <p id="empty-message" class="empty-message" hidden>조건에 맞는 Zone이 없습니다.</p>
+      </section>
+    </main>
+
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>
