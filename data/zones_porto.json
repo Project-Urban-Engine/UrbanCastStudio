@@ -1,0 +1,100 @@
+[
+  {
+    "zone_id": "PT_PRT_Z01",
+    "zone_name": "Ribeira Riverfront Bites",
+    "tier": "S",
+    "zone_character": "관광동선 중심이지만 회전율 높은 검증 맛집이 촘촘한 존.",
+    "restaurant_count": 42,
+    "avg_rating": 4.7,
+    "high_rating_ratio": 0.38,
+    "cuisine_diversity": 8.1,
+    "visibility": "public",
+    "video": {
+      "youtube_id": "dQw4w9WgXcQ",
+      "is_unlisted": false
+    },
+    "top_places": [
+      {"name": "Taberna do Cais", "rating": 4.8, "review_count": 1321, "category": "Portuguese", "note": "해산물 라인업이 안정적으로 높게 평가됨."},
+      {"name": "Ribeira Grill House", "rating": 4.7, "review_count": 854, "category": "Steak", "note": "야경 시간대 대기 길지만 만족도 높음."}
+    ]
+  },
+  {
+    "zone_id": "PT_PRT_Z02",
+    "zone_name": "Bolhão Market Core",
+    "tier": "S",
+    "zone_character": "시장 중심으로 점심 수요가 폭발하는 고밀도 식도락 존.",
+    "restaurant_count": 36,
+    "avg_rating": 4.6,
+    "high_rating_ratio": 0.31,
+    "cuisine_diversity": 7.4,
+    "visibility": "public",
+    "video": {
+      "youtube_id": "9bZkp7q19f0",
+      "is_unlisted": false
+    },
+    "top_places": [
+      {"name": "Mercado Tasca", "rating": 4.9, "review_count": 2102, "category": "Market Eatery", "note": "현지인/관광객 비율 균형이 좋음."}
+    ]
+  },
+  {
+    "zone_id": "PT_PRT_Z03",
+    "zone_name": "Cedofeita Local Labs",
+    "tier": "A",
+    "zone_character": "신생 셰프 브랜드와 로컬 단골 가게가 공존하는 탐색형 존.",
+    "restaurant_count": 28,
+    "avg_rating": 4.5,
+    "high_rating_ratio": 0.22,
+    "cuisine_diversity": 8.8,
+    "visibility": "web_only",
+    "video": {
+      "youtube_id": "3JZ_D3ELwOQ",
+      "is_unlisted": true
+    },
+    "top_places": [
+      {"name": "Rua Nova Kitchen", "rating": 4.6, "review_count": 422, "category": "Fusion", "note": "메뉴 실험이 잦아 재방문 가치가 높음."}
+    ]
+  },
+  {
+    "zone_id": "PT_PRT_Z04",
+    "zone_name": "Boavista Workday Belt",
+    "tier": "A",
+    "zone_character": "오피스 수요 기반으로 점심/저녁 피크가 분명한 실속 존.",
+    "restaurant_count": 31,
+    "avg_rating": 4.4,
+    "high_rating_ratio": 0.19,
+    "cuisine_diversity": 6.9,
+    "visibility": "public",
+    "video": {
+      "youtube_id": "L_jWHffIx5E",
+      "is_unlisted": false
+    }
+  },
+  {
+    "zone_id": "PT_PRT_Z05",
+    "zone_name": "Campanhã Station Mix",
+    "tier": "B",
+    "zone_character": "환승객 수요 중심의 가성비형 캐주얼 식당이 모인 존.",
+    "restaurant_count": 17,
+    "avg_rating": 4.1,
+    "high_rating_ratio": 0.08,
+    "cuisine_diversity": 5.2,
+    "visibility": "web_only",
+    "video": {
+      "youtube_id": "fJ9rUzIMcZQ",
+      "is_unlisted": true
+    },
+    "top_places": []
+  },
+  {
+    "zone_id": "PT_PRT_Z06",
+    "zone_name": "Foz Coastal Weekend",
+    "tier": "B",
+    "zone_character": "주말 집중형 해안 레스토랑이 주도하는 계절 변동 존.",
+    "restaurant_count": 14,
+    "avg_rating": null,
+    "high_rating_ratio": null,
+    "cuisine_diversity": null,
+    "visibility": "public",
+    "video": null
+  }
+]
