@@ -10,11 +10,17 @@
     "cuisine_diversity": 7.1,
     "visibility": "public",
     "video": {
-      "youtube_id": "kJQP7kiw5Fk",
+      "youtube_id": "",
       "is_unlisted": false
     },
     "top_places": [
-      {"name": "Rua Augusta Table", "rating": 4.8, "review_count": 1780, "category": "Portuguese", "note": "대기 시간이 길지만 만족도 안정적."}
+      {
+        "name": "Rua Augusta Table",
+        "rating": 4.8,
+        "review_count": 1780,
+        "category": "Portuguese",
+        "note": "대기 시간이 길지만 만족도 안정적."
+      }
     ]
   },
   {
@@ -28,11 +34,17 @@
     "cuisine_diversity": 6.3,
     "visibility": "web_only",
     "video": {
-      "youtube_id": "60ItHLz5WEA",
+      "youtube_id": "",
       "is_unlisted": true
     },
     "top_places": [
-      {"name": "Miradouro Bites", "rating": 4.6, "review_count": 366, "category": "Tapas", "note": "저녁 시간대 뷰 수요와 함께 급상승."}
+      {
+        "name": "Miradouro Bites",
+        "rating": 4.6,
+        "review_count": 366,
+        "category": "Tapas",
+        "note": "저녁 시간대 뷰 수요와 함께 급상승."
+      }
     ]
   },
   {
@@ -46,7 +58,7 @@
     "cuisine_diversity": 8,
     "visibility": "public",
     "video": {
-      "youtube_id": "hT_nvWreIhg",
+      "youtube_id": "",
       "is_unlisted": false
     }
   },

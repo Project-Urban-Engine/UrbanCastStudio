@@ -10,12 +10,24 @@
     "cuisine_diversity": 8.1,
     "visibility": "public",
     "video": {
-      "youtube_id": "dQw4w9WgXcQ",
+      "youtube_id": "",
       "is_unlisted": false
     },
     "top_places": [
-      {"name": "Taberna do Cais", "rating": 4.8, "review_count": 1321, "category": "Portuguese", "note": "해산물 라인업이 안정적으로 높게 평가됨."},
-      {"name": "Ribeira Grill House", "rating": 4.7, "review_count": 854, "category": "Steak", "note": "야경 시간대 대기 길지만 만족도 높음."}
+      {
+        "name": "Taberna do Cais",
+        "rating": 4.8,
+        "review_count": 1321,
+        "category": "Portuguese",
+        "note": "해산물 라인업이 안정적으로 높게 평가됨."
+      },
+      {
+        "name": "Ribeira Grill House",
+        "rating": 4.7,
+        "review_count": 854,
+        "category": "Steak",
+        "note": "야경 시간대 대기 길지만 만족도 높음."
+      }
     ]
   },
   {
@@ -29,11 +41,17 @@
     "cuisine_diversity": 7.4,
     "visibility": "public",
     "video": {
-      "youtube_id": "9bZkp7q19f0",
+      "youtube_id": "",
       "is_unlisted": false
     },
     "top_places": [
-      {"name": "Mercado Tasca", "rating": 4.9, "review_count": 2102, "category": "Market Eatery", "note": "현지인/관광객 비율 균형이 좋음."}
+      {
+        "name": "Mercado Tasca",
+        "rating": 4.9,
+        "review_count": 2102,
+        "category": "Market Eatery",
+        "note": "현지인/관광객 비율 균형이 좋음."
+      }
     ]
   },
   {
@@ -47,11 +65,17 @@
     "cuisine_diversity": 8.8,
     "visibility": "web_only",
     "video": {
-      "youtube_id": "3JZ_D3ELwOQ",
+      "youtube_id": "",
       "is_unlisted": true
     },
     "top_places": [
-      {"name": "Rua Nova Kitchen", "rating": 4.6, "review_count": 422, "category": "Fusion", "note": "메뉴 실험이 잦아 재방문 가치가 높음."}
+      {
+        "name": "Rua Nova Kitchen",
+        "rating": 4.6,
+        "review_count": 422,
+        "category": "Fusion",
+        "note": "메뉴 실험이 잦아 재방문 가치가 높음."
+      }
     ]
   },
   {
@@ -65,7 +89,7 @@
     "cuisine_diversity": 6.9,
     "visibility": "public",
     "video": {
-      "youtube_id": "L_jWHffIx5E",
+      "youtube_id": "",
       "is_unlisted": false
     }
   },
@@ -80,7 +104,7 @@
     "cuisine_diversity": 5.2,
     "visibility": "web_only",
     "video": {
-      "youtube_id": "fJ9rUzIMcZQ",
+      "youtube_id": "",
       "is_unlisted": true
     },
     "top_places": []

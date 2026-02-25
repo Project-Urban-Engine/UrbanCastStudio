@@ -27,7 +27,7 @@
     "cuisine_diversity": 8.1,
     "visibility": "public",
     "video": {
-      "youtube_id": "dQw4w9WgXcQ",
+      "youtube_id": "",
       "is_unlisted": false
     },
     "top_places": [

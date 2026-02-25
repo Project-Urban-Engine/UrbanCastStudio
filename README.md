@@ -4,7 +4,7 @@ GitHub Pages에 바로 배포 가능한 정적 사이트입니다. 핵심 목표
 
 ## 파일 구조
 
-- `index.html` : Home (도시 목록)
+- `index.html` : Home (도시 목록 + 핵심 KPI + featured zone)
 - `city.html` : 도시별 Zone 목록 + 필터/검색
 - `zone.html` : Zone 상세 (지표 + top places + YouTube)
 - `assets/styles.css` : 공통 스타일
@@ -34,3 +34,7 @@ python -m http.server 8000
 4. Save 후 수 분 내 배포 URL 생성
 
 > 상대 경로(`./assets/...`, `./data/...`)를 사용하므로 GitHub Pages에서 바로 동작합니다.
+
+## 미리보기 환경 참고
+
+일부 미리보기 도구에서는 `fetch`로 JSON을 읽지 못하는 경우가 있습니다. 이 프로젝트는 해당 상황을 대비해 `assets/app.js`에 폴백 샘플 데이터를 포함해, 미리보기에서도 빈 화면 대신 기본 콘텐츠가 보이도록 처리했습니다.
