@@ -1,0 +1,78 @@
+[
+  {
+    "zone_id": "PT_LSB_Z01",
+    "zone_name": "Baixa Fast Classics",
+    "tier": "S",
+    "zone_character": "관광 핵심권에서 실패 확률이 낮은 클래식 맛집이 밀집한 존.",
+    "restaurant_count": 39,
+    "avg_rating": 4.7,
+    "high_rating_ratio": 0.35,
+    "cuisine_diversity": 7.1,
+    "visibility": "public",
+    "video": {
+      "youtube_id": "",
+      "is_unlisted": false
+    },
+    "top_places": [
+      {
+        "name": "Rua Augusta Table",
+        "rating": 4.8,
+        "review_count": 1780,
+        "category": "Portuguese",
+        "note": "대기 시간이 길지만 만족도 안정적."
+      }
+    ]
+  },
+  {
+    "zone_id": "PT_LSB_Z02",
+    "zone_name": "Alfama Hidden Steps",
+    "tier": "A",
+    "zone_character": "골목형 동선에서 소규모 고평점 식당이 산재한 존.",
+    "restaurant_count": 24,
+    "avg_rating": 4.5,
+    "high_rating_ratio": 0.2,
+    "cuisine_diversity": 6.3,
+    "visibility": "web_only",
+    "video": {
+      "youtube_id": "",
+      "is_unlisted": true
+    },
+    "top_places": [
+      {
+        "name": "Miradouro Bites",
+        "rating": 4.6,
+        "review_count": 366,
+        "category": "Tapas",
+        "note": "저녁 시간대 뷰 수요와 함께 급상승."
+      }
+    ]
+  },
+  {
+    "zone_id": "PT_LSB_Z03",
+    "zone_name": "Bairro Alto Late Night",
+    "tier": "A",
+    "zone_character": "야간 유동이 높아 심야식/바푸드 데이터가 풍부한 존.",
+    "restaurant_count": 27,
+    "avg_rating": 4.3,
+    "high_rating_ratio": 0.16,
+    "cuisine_diversity": 8,
+    "visibility": "public",
+    "video": {
+      "youtube_id": "",
+      "is_unlisted": false
+    }
+  },
+  {
+    "zone_id": "PT_LSB_Z04",
+    "zone_name": "Parque Nations Family Belt",
+    "tier": "B",
+    "zone_character": "가족 단위 방문이 많은 대형 상권형 레스토랑 존.",
+    "restaurant_count": 19,
+    "avg_rating": null,
+    "high_rating_ratio": null,
+    "cuisine_diversity": 5.7,
+    "visibility": "public",
+    "video": null,
+    "top_places": []
+  }
+]

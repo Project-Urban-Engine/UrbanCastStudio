@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrbanCast 도시 데이터 허브</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <div class="container">
+        <h1>UrbanCast 도시 데이터 허브</h1>
+        <p>도시별 Food Zone 데이터를 축적하고 빠르게 조회하는 MVP</p>
+      </div>
+    </header>
+
+    <main class="container home-main">
+      <section class="hero-card">
+        <div>
+          <p class="eyebrow">UrbanCast Food Layer MVP</p>
+          <h2>Zone 데이터 축적 + 조회를 위한 시작점</h2>
+          <p class="hero-copy">
+            지도 없이도 도시별 Zone 현황, 공개/웹전용 분리, 핵심 지표를 빠르게 확인할 수 있도록 구성했습니다.
+          </p>
+        </div>
+        <div class="hero-kpis" id="home-kpis" aria-live="polite">
+          <article class="kpi-card">
+            <p class="kpi-label">Cities</p>
+            <p class="kpi-value">-</p>
+          </article>
+          <article class="kpi-card">
+            <p class="kpi-label">Total Zones</p>
+            <p class="kpi-value">-</p>
+          </article>
+          <article class="kpi-card">
+            <p class="kpi-label">Public Zones</p>
+            <p class="kpi-value">-</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title-row">
+          <h2>도시 목록</h2>
+          <span class="muted">도시를 선택하면 Zone 테이블로 이동합니다</span>
+        </div>
+        <div id="city-list" class="city-grid" aria-live="polite">
+          <article class="city-card city-card-skeleton">
+            <h3>Porto</h3>
+            <p>강변과 구도심의 개성 있는 Food Zone을 추적하는 도시</p>
+            <p class="city-meta">Total Zones: -</p>
+            <p class="city-meta">Public Zones: -</p>
+          </article>
+          <article class="city-card city-card-skeleton">
+            <h3>Lisbon</h3>
+            <p>관광권/로컬권이 섞인 다층형 Food Zone 실험 도시</p>
+            <p class="city-meta">Total Zones: -</p>
+            <p class="city-meta">Public Zones: -</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="featured-section">
+        <div class="section-title-row">
+          <h2>Featured Public Zones</h2>
+          <span class="muted">각 도시의 대표 공개 Zone</span>
+        </div>
+        <ul id="featured-zones" class="featured-list"></ul>
+      </section>
+    </main>
+
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>
