@@ -3,14 +3,16 @@
     "slug": "porto",
     "name": "Porto",
     "country": "Portugal",
-    "description": "강변과 구도심의 개성 있는 Food Zone을 추적하는 도시",
+    "country_code": "pt",
+    "description": "Riverside charm meets gritty old town — tracking the city's boldest Food Zones.",
     "zones_file": "zones_porto.json"
   },
   {
     "slug": "lisbon",
     "name": "Lisbon",
     "country": "Portugal",
-    "description": "관광권/로컬권이 섞인 다층형 Food Zone 실험 도시",
+    "country_code": "pt",
+    "description": "Tourist corridors blending with hyper-local layers — a multi-tier Food Zone lab.",
     "zones_file": "zones_lisbon.json"
   }
 ]

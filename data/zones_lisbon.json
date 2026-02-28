@@ -1,9 +1,17 @@
 [
   {
     "zone_id": "PT_LSB_Z01",
-    "zone_name": "Baixa Fast Classics",
+    "coordinates": {
+      "lat": 38.7139,
+      "lng": -9.1395
+    },
+    \"bounds\": [[38.7108, -9.1440], [38.7175, -9.1340]],"zone_name": "Baixa Fast Classics",
     "tier": "S",
-    "zone_character": "관광 핵심권에서 실패 확률이 낮은 클래식 맛집이 밀집한 존.",
+    "area": [
+      "Tourist",
+      "Historic"
+    ],
+    "zone_character": "Tourist core packed with reliable classics — low risk, consistently high reward.",
     "restaurant_count": 39,
     "avg_rating": 4.7,
     "high_rating_ratio": 0.35,
@@ -19,15 +27,33 @@
         "rating": 4.8,
         "review_count": 1780,
         "category": "Portuguese",
-        "note": "대기 시간이 길지만 만족도 안정적."
+        "note": "Long queues but satisfaction scores stay consistently high."
       }
     ]
   },
   {
     "zone_id": "PT_LSB_Z02",
+    "coordinates": {
+      "lat": 38.7100,
+      "lng": -9.1262
+    },
+    "bounds": [
+      [
+        38.7068,
+        -9.1315
+      ],
+      [
+        38.7135,
+        -9.1200
+      ]
+    ],
     "zone_name": "Alfama Hidden Steps",
     "tier": "A",
-    "zone_character": "골목형 동선에서 소규모 고평점 식당이 산재한 존.",
+    "area": [
+      "Historic",
+      "Local"
+    ],
+    "zone_character": "Alley-style district with small, high-rated spots hidden along every winding stairway.",
     "restaurant_count": 24,
     "avg_rating": 4.5,
     "high_rating_ratio": 0.2,
@@ -43,15 +69,33 @@
         "rating": 4.6,
         "review_count": 366,
         "category": "Tapas",
-        "note": "저녁 시간대 뷰 수요와 함께 급상승."
+        "note": "Evening view demand drives a sharp spike in foot traffic and ratings."
       }
     ]
   },
   {
     "zone_id": "PT_LSB_Z03",
+    "coordinates": {
+      "lat": 38.7119,
+      "lng": -9.1458
+    },
+    "bounds": [
+      [
+        38.7090,
+        -9.1510
+      ],
+      [
+        38.7152,
+        -9.1400
+      ]
+    ],
     "zone_name": "Bairro Alto Late Night",
     "tier": "A",
-    "zone_character": "야간 유동이 높아 심야식/바푸드 데이터가 풍부한 존.",
+    "area": [
+      "Nightlife",
+      "Local"
+    ],
+    "zone_character": "High late-night foot traffic — rich data on after-midnight eats and bar-food culture.",
     "restaurant_count": 27,
     "avg_rating": 4.3,
     "high_rating_ratio": 0.16,
@@ -64,9 +108,27 @@
   },
   {
     "zone_id": "PT_LSB_Z04",
+    "coordinates": {
+      "lat": 38.7638,
+      "lng": -9.0980
+    },
+    "bounds": [
+      [
+        38.7570,
+        -9.1080
+      ],
+      [
+        38.7710,
+        -9.0880
+      ]
+    ],
     "zone_name": "Parque Nations Family Belt",
     "tier": "B",
-    "zone_character": "가족 단위 방문이 많은 대형 상권형 레스토랑 존.",
+    "area": [
+      "Family",
+      "Waterfront"
+    ],
+    "zone_character": "Family-oriented district with large commercial restaurants and broad mainstream appeal.",
     "restaurant_count": 19,
     "avg_rating": null,
     "high_rating_ratio": null,

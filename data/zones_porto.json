@@ -1,16 +1,34 @@
 [
   {
     "zone_id": "PT_PRT_Z01",
+    "coordinates": {
+      "lat": 41.1403,
+      "lng": -8.6147
+    },
+    "bounds": [
+      [
+        41.1378,
+        -8.6195
+      ],
+      [
+        41.1428,
+        -8.6088
+      ]
+    ],
     "zone_name": "Ribeira Riverfront Bites",
     "tier": "S",
-    "zone_character": "관광동선 중심이지만 회전율 높은 검증 맛집이 촘촘한 존.",
+    "area": [
+      "Waterfront",
+      "Tourist"
+    ],
+    "zone_character": "High-traffic tourist corridor packed with vetted spots — dense, reliable, well-reviewed.",
     "restaurant_count": 42,
     "avg_rating": 4.7,
     "high_rating_ratio": 0.38,
     "cuisine_diversity": 8.1,
     "visibility": "public",
     "video": {
-      "youtube_id": "",
+      "youtube_id": "dQw4w9WgXcQ",
       "is_unlisted": false
     },
     "top_places": [
@@ -19,22 +37,40 @@
         "rating": 4.8,
         "review_count": 1321,
         "category": "Portuguese",
-        "note": "해산물 라인업이 안정적으로 높게 평가됨."
+        "note": "Seafood lineup consistently earns top marks."
       },
       {
         "name": "Ribeira Grill House",
         "rating": 4.7,
         "review_count": 854,
         "category": "Steak",
-        "note": "야경 시간대 대기 길지만 만족도 높음."
+        "note": "Long waits for the evening view, but satisfaction scores stay high."
       }
     ]
   },
   {
     "zone_id": "PT_PRT_Z02",
+    "coordinates": {
+      "lat": 41.1484,
+      "lng": -8.6085
+    },
+    "bounds": [
+      [
+        41.1458,
+        -8.6128
+      ],
+      [
+        41.1512,
+        -8.6030
+      ]
+    ],
     "zone_name": "Bolhão Market Core",
     "tier": "S",
-    "zone_character": "시장 중심으로 점심 수요가 폭발하는 고밀도 식도락 존.",
+    "area": [
+      "Market",
+      "Local"
+    ],
+    "zone_character": "Market-driven zone with explosive lunch demand and exceptional food density.",
     "restaurant_count": 36,
     "avg_rating": 4.6,
     "high_rating_ratio": 0.31,
@@ -50,15 +86,33 @@
         "rating": 4.9,
         "review_count": 2102,
         "category": "Market Eatery",
-        "note": "현지인/관광객 비율 균형이 좋음."
+        "note": "Good balance of locals and tourists — a reliable crowd indicator."
       }
     ]
   },
   {
     "zone_id": "PT_PRT_Z03",
+    "coordinates": {
+      "lat": 41.1527,
+      "lng": -8.6252
+    },
+    "bounds": [
+      [
+        41.1495,
+        -8.6320
+      ],
+      [
+        41.1560,
+        -8.6170
+      ]
+    ],
     "zone_name": "Cedofeita Local Labs",
     "tier": "A",
-    "zone_character": "신생 셰프 브랜드와 로컬 단골 가게가 공존하는 탐색형 존.",
+    "area": [
+      "Local",
+      "Nightlife"
+    ],
+    "zone_character": "Emerging chef brands alongside long-standing local regulars — the best zone for discovery.",
     "restaurant_count": 28,
     "avg_rating": 4.5,
     "high_rating_ratio": 0.22,
@@ -74,15 +128,32 @@
         "rating": 4.6,
         "review_count": 422,
         "category": "Fusion",
-        "note": "메뉴 실험이 잦아 재방문 가치가 높음."
+        "note": "Frequently rotating menu — high revisit value for adventurous eaters."
       }
     ]
   },
   {
     "zone_id": "PT_PRT_Z04",
+    "coordinates": {
+      "lat": 41.1579,
+      "lng": -8.6432
+    },
+    "bounds": [
+      [
+        41.1540,
+        -8.6530
+      ],
+      [
+        41.1618,
+        -8.6330
+      ]
+    ],
     "zone_name": "Boavista Workday Belt",
     "tier": "A",
-    "zone_character": "오피스 수요 기반으로 점심/저녁 피크가 분명한 실속 존.",
+    "area": [
+      "Business"
+    ],
+    "zone_character": "Office-driven demand with sharp lunch and dinner peaks — practical and unpretentious.",
     "restaurant_count": 31,
     "avg_rating": 4.4,
     "high_rating_ratio": 0.19,
@@ -95,9 +166,27 @@
   },
   {
     "zone_id": "PT_PRT_Z05",
+    "coordinates": {
+      "lat": 41.1490,
+      "lng": -8.5792
+    },
+    "bounds": [
+      [
+        41.1455,
+        -8.5860
+      ],
+      [
+        41.1525,
+        -8.5720
+      ]
+    ],
     "zone_name": "Campanhã Station Mix",
     "tier": "B",
-    "zone_character": "환승객 수요 중심의 가성비형 캐주얼 식당이 모인 존.",
+    "area": [
+      "Transit",
+      "Local"
+    ],
+    "zone_character": "Transit commuter zone — casual, budget-friendly spots clustered around the station.",
     "restaurant_count": 17,
     "avg_rating": 4.1,
     "high_rating_ratio": 0.08,
@@ -111,9 +200,27 @@
   },
   {
     "zone_id": "PT_PRT_Z06",
+    "coordinates": {
+      "lat": 41.1504,
+      "lng": -8.6783
+    },
+    "bounds": [
+      [
+        41.1465,
+        -8.6880
+      ],
+      [
+        41.1545,
+        -8.6680
+      ]
+    ],
     "zone_name": "Foz Coastal Weekend",
     "tier": "B",
-    "zone_character": "주말 집중형 해안 레스토랑이 주도하는 계절 변동 존.",
+    "area": [
+      "Coastal",
+      "Family"
+    ],
+    "zone_character": "Weekend-heavy coastal dining with seasonal volume swings and ocean views.",
     "restaurant_count": 14,
     "avg_rating": null,
     "high_rating_ratio": null,

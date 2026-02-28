@@ -1,67 +1,74 @@
 <!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UrbanCast 도시 Zone 목록</title>
-    <link rel="stylesheet" href="./assets/styles.css" />
-  </head>
-  <body data-page="city">
-    <header class="site-header">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanCast — City Zones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body data-page="city">
+
+  <nav class="topnav">
+    <div class="container">
+      <a class="nav-logo" href="./index.html">UrbanCast</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="city-page-header">
       <div class="container">
-        <a href="./index.html" class="back-link">← Home</a>
-        <h1 id="city-title">도시 Zone 목록</h1>
+        <nav class="breadcrumb" aria-label="breadcrumb">
+          <a href="./index.html">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span id="city-breadcrumb">City</span>
+        </nav>
+        <h1 class="city-page-title" id="city-title">Zones</h1>
       </div>
     </header>
 
-    <main class="container">
-      <section class="filters">
-        <h2 class="visually-hidden">필터</h2>
-        <label>
-          Visibility
-          <select id="visibility-filter">
-            <option value="public">Public only</option>
-            <option value="all">All</option>
-            <option value="web_only">Web-only only</option>
-          </select>
-        </label>
-
-        <label>
-          Tier
-          <select id="tier-filter">
-            <option value="all">All</option>
-            <option value="S">S</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-          </select>
-        </label>
-
-        <label>
-          Search
-          <input id="search-input" type="search" placeholder="Zone 이름 검색" />
-        </label>
-      </section>
-
-      <section>
-        <div class="table-scroll">
-          <table class="zone-table">
-            <thead>
-              <tr>
-                <th>Zone</th>
-                <th>Tier</th>
-                <th>Visibility</th>
-                <th>Restaurants</th>
-                <th>Avg Rating</th>
-                <th>High Rating Ratio</th>
-              </tr>
-            </thead>
-            <tbody id="zone-table-body"></tbody>
-          </table>
+    <div class="container">
+      <div class="filter-bar" role="group" aria-label="Filters">
+        <div class="filter-row">
+          <div class="filter-group">
+            <span class="filter-label">area</span>
+            <div class="filter-pills" id="area-pills">
+              <!-- dynamically populated by JS -->
+            </div>
+          </div>
         </div>
-        <p id="empty-message" class="empty-message" hidden>조건에 맞는 Zone이 없습니다.</p>
-      </section>
-    </main>
+        <div class="filter-row filter-row--tier">
+          <div class="filter-group">
+            <span class="filter-label">tier</span>
+            <div class="filter-pills" id="tier-pills">
+              <button class="filter-pill active" data-filter="tier" data-value="all">All</button>
+              <button class="filter-pill" data-filter="tier" data-value="S" data-tier="S">S</button>
+              <button class="filter-pill" data-filter="tier" data-value="A" data-tier="A">A</button>
+              <button class="filter-pill" data-filter="tier" data-value="B" data-tier="B">B</button>
+            </div>
+          </div>
+          <div class="search-wrap">
+            <input class="search-input" id="search-input" type="search" placeholder="Search zones..." />
+          </div>
+        </div>
+      </div>
 
-    <script src="./assets/app.js" defer></script>
-  </body>
+      <div id="zone-grid" class="zone-grid" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">UrbanCast © 2025 · Urban Engine</div>
+  </footer>
+
+  <script src="./assets/app.js" defer></script>
+</body>
+
 </html>

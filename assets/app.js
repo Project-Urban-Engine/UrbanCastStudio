@@ -1,39 +1,38 @@
 (() => {
+  /* ============================================================
+     CONFIG
+     ============================================================ */
+  const FEATURED_LIMIT = 5; // Max zones shown in Featured section — change here to adjust
+
+  /* ============================================================
+     FALLBACK DATA  (used when JSON fetch fails in local preview)
+     ============================================================ */
   const FALLBACK_DATA = {
     cities: [
-      {
-        slug: 'porto',
-        name: 'Porto',
-        country: 'Portugal',
-        description: '강변과 구도심의 개성 있는 Food Zone을 추적하는 도시',
-        zones_file: 'zones_porto.json',
-      },
-      {
-        slug: 'lisbon',
-        name: 'Lisbon',
-        country: 'Portugal',
-        description: '관광권/로컬권이 섞인 다층형 Food Zone 실험 도시',
-        zones_file: 'zones_lisbon.json',
-      },
+      { slug: 'porto', name: 'Porto', country: 'Portugal', country_code: 'pt', description: 'Riverside charm meets gritty old town — tracking the city\'s boldest Food Zones.', zones_file: 'zones_porto.json' },
+      { slug: 'lisbon', name: 'Lisbon', country: 'Portugal', country_code: 'pt', description: 'Tourist corridors blending with hyper-local layers — a multi-tier Food Zone lab.', zones_file: 'zones_lisbon.json' },
     ],
     zones_porto: [
-      { zone_id: 'PT_PRT_Z01', zone_name: 'Ribeira Riverfront Bites', tier: 'S', zone_character: '관광동선 중심이지만 회전율 높은 검증 맛집이 촘촘한 존.', restaurant_count: 42, avg_rating: 4.7, high_rating_ratio: 0.38, cuisine_diversity: 8.1, visibility: 'public', video: { youtube_id: '', is_unlisted: false }, top_places: [{ name: 'Taberna do Cais', rating: 4.8, review_count: 1321, category: 'Portuguese', note: '해산물 라인업이 안정적으로 높게 평가됨.' }] },
-      { zone_id: 'PT_PRT_Z02', zone_name: 'Bolhão Market Core', tier: 'S', zone_character: '시장 중심으로 점심 수요가 폭발하는 고밀도 식도락 존.', restaurant_count: 36, avg_rating: 4.6, high_rating_ratio: 0.31, cuisine_diversity: 7.4, visibility: 'public', video: { youtube_id: '', is_unlisted: false } },
-      { zone_id: 'PT_PRT_Z03', zone_name: 'Cedofeita Local Labs', tier: 'A', zone_character: '신생 셰프 브랜드와 로컬 단골 가게가 공존하는 탐색형 존.', restaurant_count: 28, avg_rating: 4.5, high_rating_ratio: 0.22, cuisine_diversity: 8.8, visibility: 'web_only', video: { youtube_id: '', is_unlisted: true } },
-      { zone_id: 'PT_PRT_Z04', zone_name: 'Boavista Workday Belt', tier: 'A', zone_character: '오피스 수요 기반으로 점심/저녁 피크가 분명한 실속 존.', restaurant_count: 31, avg_rating: 4.4, high_rating_ratio: 0.19, cuisine_diversity: 6.9, visibility: 'public', video: { youtube_id: '', is_unlisted: false } },
-      { zone_id: 'PT_PRT_Z05', zone_name: 'Campanhã Station Mix', tier: 'B', zone_character: '환승객 수요 중심의 가성비형 캐주얼 식당이 모인 존.', restaurant_count: 17, avg_rating: 4.1, high_rating_ratio: 0.08, cuisine_diversity: 5.2, visibility: 'web_only', video: { youtube_id: '', is_unlisted: true } },
-      { zone_id: 'PT_PRT_Z06', zone_name: 'Foz Coastal Weekend', tier: 'B', zone_character: '주말 집중형 해안 레스토랑이 주도하는 계절 변동 존.', restaurant_count: 14, avg_rating: null, high_rating_ratio: null, cuisine_diversity: null, visibility: 'public', video: null },
+      { zone_id: 'PT_PRT_Z01', coordinates: { lat: 41.1403, lng: -8.6147 }, bounds: [[41.1378, -8.6195], [41.1428, -8.6088]], zone_name: 'Ribeira Riverfront Bites', tier: 'S', area: ['Waterfront', 'Tourist'], zone_character: 'High-traffic tourist corridor packed with vetted spots — dense, reliable, well-reviewed.', restaurant_count: 42, avg_rating: 4.7, high_rating_ratio: 0.38, cuisine_diversity: 8.1, visibility: 'public', video: { youtube_id: 'dQw4w9WgXcQ', is_unlisted: false }, top_places: [{ name: 'Taberna do Cais', rating: 4.8, review_count: 1321, category: 'Portuguese', note: 'Seafood lineup consistently earns top marks.' }, { name: 'Cantinho do Avillez', rating: 4.7, review_count: 980, category: 'Modern Portuguese', note: null }] },
+      { zone_id: 'PT_PRT_Z02', coordinates: { lat: 41.1484, lng: -8.6085 }, bounds: [[41.1458, -8.6128], [41.1512, -8.6030]], zone_name: 'Bolhão Market Core', tier: 'S', area: ['Market', 'Local'], zone_character: 'Market-driven zone with explosive lunch demand and exceptional food density.', restaurant_count: 36, avg_rating: 4.6, high_rating_ratio: 0.31, cuisine_diversity: 7.4, visibility: 'public', video: { youtube_id: '', is_unlisted: false }, top_places: [] },
+      { zone_id: 'PT_PRT_Z03', coordinates: { lat: 41.1527, lng: -8.6252 }, bounds: [[41.1495, -8.6320], [41.1560, -8.6170]], zone_name: 'Cedofeita Local Labs', tier: 'A', area: ['Local', 'Nightlife'], zone_character: 'Emerging chef brands alongside long-standing local regulars — the best zone for discovery.', restaurant_count: 28, avg_rating: 4.5, high_rating_ratio: 0.22, cuisine_diversity: 8.8, visibility: 'web_only', video: { youtube_id: '', is_unlisted: true }, top_places: [] },
+      { zone_id: 'PT_PRT_Z04', coordinates: { lat: 41.1579, lng: -8.6432 }, bounds: [[41.1540, -8.6530], [41.1618, -8.6330]], zone_name: 'Boavista Workday Belt', tier: 'A', area: ['Business'], zone_character: 'Office-driven demand with sharp lunch and dinner peaks — practical and unpretentious.', restaurant_count: 31, avg_rating: 4.4, high_rating_ratio: 0.19, cuisine_diversity: 6.9, visibility: 'public', video: { youtube_id: '', is_unlisted: false }, top_places: [] },
+      { zone_id: 'PT_PRT_Z05', coordinates: { lat: 41.1490, lng: -8.5792 }, bounds: [[41.1455, -8.5860], [41.1525, -8.5720]], zone_name: 'Campanhã Station Mix', tier: 'B', area: ['Transit', 'Local'], zone_character: 'Transit commuter zone — casual, budget-friendly spots clustered around the station.', restaurant_count: 17, avg_rating: 4.1, high_rating_ratio: 0.08, cuisine_diversity: 5.2, visibility: 'web_only', video: { youtube_id: '', is_unlisted: true }, top_places: [] },
+      { zone_id: 'PT_PRT_Z06', coordinates: { lat: 41.1504, lng: -8.6783 }, bounds: [[41.1465, -8.6880], [41.1545, -8.6680]], zone_name: 'Foz Coastal Weekend', tier: 'B', area: ['Coastal', 'Family'], zone_character: 'Weekend-heavy coastal dining with seasonal volume swings and ocean views.', restaurant_count: 14, avg_rating: null, high_rating_ratio: null, cuisine_diversity: null, visibility: 'public', video: null, top_places: [] },
     ],
     zones_lisbon: [
-      { zone_id: 'PT_LSB_Z01', zone_name: 'Baixa Fast Classics', tier: 'S', zone_character: '관광 핵심권에서 실패 확률이 낮은 클래식 맛집이 밀집한 존.', restaurant_count: 39, avg_rating: 4.7, high_rating_ratio: 0.35, cuisine_diversity: 7.1, visibility: 'public', video: { youtube_id: '', is_unlisted: false } },
-      { zone_id: 'PT_LSB_Z02', zone_name: 'Alfama Hidden Steps', tier: 'A', zone_character: '골목형 동선에서 소규모 고평점 식당이 산재한 존.', restaurant_count: 24, avg_rating: 4.5, high_rating_ratio: 0.2, cuisine_diversity: 6.3, visibility: 'web_only', video: { youtube_id: '', is_unlisted: true } },
-      { zone_id: 'PT_LSB_Z03', zone_name: 'Bairro Alto Late Night', tier: 'A', zone_character: '야간 유동이 높아 심야식/바푸드 데이터가 풍부한 존.', restaurant_count: 27, avg_rating: 4.3, high_rating_ratio: 0.16, cuisine_diversity: 8, visibility: 'public', video: { youtube_id: '', is_unlisted: false } },
-      { zone_id: 'PT_LSB_Z04', zone_name: 'Parque Nations Family Belt', tier: 'B', zone_character: '가족 단위 방문이 많은 대형 상권형 레스토랑 존.', restaurant_count: 19, avg_rating: null, high_rating_ratio: null, cuisine_diversity: 5.7, visibility: 'public', video: null },
+      { zone_id: 'PT_LSB_Z01', coordinates: { lat: 38.7139, lng: -9.1395 }, bounds: [[38.7108, -9.1440], [38.7175, -9.1340]], zone_name: 'Baixa Fast Classics', tier: 'S', area: ['Tourist', 'Historic'], zone_character: 'Tourist core packed with reliable classics — low risk, consistently high reward.', restaurant_count: 39, avg_rating: 4.7, high_rating_ratio: 0.35, cuisine_diversity: 7.1, visibility: 'public', video: { youtube_id: '', is_unlisted: false }, top_places: [] },
+      { zone_id: 'PT_LSB_Z02', coordinates: { lat: 38.7100, lng: -9.1262 }, bounds: [[38.7068, -9.1315], [38.7135, -9.1200]], zone_name: 'Alfama Hidden Steps', tier: 'A', area: ['Historic', 'Local'], zone_character: 'Alley-style district with small, high-rated spots hidden along every winding stairway.', restaurant_count: 24, avg_rating: 4.5, high_rating_ratio: 0.2, cuisine_diversity: 6.3, visibility: 'web_only', video: { youtube_id: '', is_unlisted: true }, top_places: [] },
+      { zone_id: 'PT_LSB_Z03', coordinates: { lat: 38.7119, lng: -9.1458 }, bounds: [[38.7090, -9.1510], [38.7152, -9.1400]], zone_name: 'Bairro Alto Late Night', tier: 'A', area: ['Nightlife', 'Local'], zone_character: 'High late-night foot traffic — rich data on after-midnight eats and bar-food culture.', restaurant_count: 27, avg_rating: 4.3, high_rating_ratio: 0.16, cuisine_diversity: 8, visibility: 'public', video: { youtube_id: '', is_unlisted: false }, top_places: [] },
+      { zone_id: 'PT_LSB_Z04', coordinates: { lat: 38.7638, lng: -9.0980 }, bounds: [[38.7570, -9.1080], [38.7710, -9.0880]], zone_name: 'Parque Nations Family Belt', tier: 'B', area: ['Family', 'Waterfront'], zone_character: 'Family-oriented district with large commercial restaurants and broad mainstream appeal.', restaurant_count: 19, avg_rating: null, high_rating_ratio: null, cuisine_diversity: 5.7, visibility: 'public', video: null, top_places: [] },
     ],
   };
 
+  /* ============================================================
+     DATA LOADER
+     ============================================================ */
   const DataLoader = {
-    fallbackByPath(path) {
+    _fallback(path) {
       if (path.includes('cities.json')) return FALLBACK_DATA.cities;
       if (path.includes('zones_porto.json')) return FALLBACK_DATA.zones_porto;
       if (path.includes('zones_lisbon.json')) return FALLBACK_DATA.zones_lisbon;
@@ -42,16 +41,13 @@
 
     async fetchJson(path) {
       try {
-        const response = await fetch(path, { cache: 'no-store' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
-      } catch (error) {
-        const fallback = this.fallbackByPath(path);
-        if (fallback) {
-          console.warn(`Using fallback dataset for ${path}`, error);
-          return fallback;
-        }
-        throw error;
+        const res = await fetch(path, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      } catch (err) {
+        const fb = this._fallback(path);
+        if (fb) { console.warn(`Fallback → ${path}`, err); return fb; }
+        throw err;
       }
     },
 
@@ -61,45 +57,60 @@
 
     async loadZonesByCity(citySlug) {
       const cities = await this.loadCities();
-      const city = cities.find((item) => item.slug === citySlug);
+      const city = cities.find(c => c.slug === citySlug);
       if (!city) throw new Error(`City not found: ${citySlug}`);
       const zones = await this.fetchJson(`./data/${city.zones_file}`);
       return { city, zones, cities };
     },
   };
 
+  /* ============================================================
+     UTILS
+     ============================================================ */
   const Utils = {
     getQueryParam(name) {
       return new URLSearchParams(window.location.search).get(name);
     },
-
+    cityUrl(slug) {
+      return `./city.html?city=${encodeURIComponent(slug)}`;
+    },
     zoneUrl(citySlug, zoneId) {
       return `./zone.html?city=${encodeURIComponent(citySlug)}&zone=${encodeURIComponent(zoneId)}`;
     },
-
-    cityUrl(citySlug) {
-      return `./city.html?city=${encodeURIComponent(citySlug)}`;
-    },
-
-    formatMetric(value, { ratio = false } = {}) {
-      if (value === null || value === undefined || value === '') return '-';
+    fmt(value, { ratio = false } = {}) {
+      if (value === null || value === undefined || value === '') return '\u2014';
       if (ratio) return `${Math.round(value * 100)}%`;
-      return value;
+      return String(value);
     },
-
     sortZones(a, b) {
-      const tierPriority = { S: 0, A: 1, B: 2 };
-      const tierDiff = (tierPriority[a.tier] ?? 99) - (tierPriority[b.tier] ?? 99);
-      if (tierDiff !== 0) return tierDiff;
-      return (b.restaurant_count ?? 0) - (a.restaurant_count ?? 0);
+      const p = { S: 0, A: 1, B: 2 };
+      const d = (p[a.tier] ?? 9) - (p[b.tier] ?? 9);
+      return d !== 0 ? d : (b.restaurant_count ?? 0) - (a.restaurant_count ?? 0);
+    },
+    // City accent colors for visual variety
+    cityAccent(index) {
+      const accents = [
+        'rgba(255,69,0,0.15)',    // orange
+        'rgba(124,58,237,0.14)',  // violet
+        'rgba(34,211,238,0.12)', // cyan
+        'rgba(245,158,11,0.14)', // amber
+      ];
+      return accents[index % accents.length];
     },
   };
 
+  /* ============================================================
+     RENDERER
+     ============================================================ */
   const Renderer = {
+
+    /* ---------- HOME ---------- */
     async renderHome() {
       const cityListEl = document.getElementById('city-list');
-      const kpiEl = document.getElementById('home-kpis');
       const featuredEl = document.getElementById('featured-zones');
+      const kpiCities = document.getElementById('kpi-cities');
+      const kpiZones = document.getElementById('kpi-zones');
+      const kpiPublic = document.getElementById('kpi-public');
 
       const cities = await DataLoader.loadCities();
       const cityWithZones = await Promise.all(
@@ -109,202 +120,401 @@
         })
       );
 
-      const totalZones = cityWithZones.reduce((sum, item) => sum + item.zones.length, 0);
-      const publicZones = cityWithZones.reduce(
-        (sum, item) => sum + item.zones.filter((zone) => zone.visibility === 'public').length,
-        0
-      );
+      // KPIs
+      const totalZones = cityWithZones.reduce((s, d) => s + d.zones.length, 0);
+      const publicZones = cityWithZones.reduce((s, d) => s + d.zones.filter(z => z.visibility === 'public').length, 0);
+      kpiCities.textContent = cities.length;
+      kpiZones.textContent = totalZones;
+      kpiPublic.textContent = publicZones;
 
-      kpiEl.innerHTML = `
-        <article class="kpi-card"><p class="kpi-label">Cities</p><p class="kpi-value">${cities.length}</p></article>
-        <article class="kpi-card"><p class="kpi-label">Total Zones</p><p class="kpi-value">${totalZones}</p></article>
-        <article class="kpi-card"><p class="kpi-label">Public Zones</p><p class="kpi-value">${publicZones}</p></article>
-      `;
-
+      // City cards
       cityListEl.innerHTML = '';
-      cityWithZones.forEach(({ city, zones }) => {
-        const zoneCount = zones.length;
-        const publicCount = zones.filter((zone) => zone.visibility === 'public').length;
+      cityWithZones.forEach(({ city, zones }, idx) => {
+        const total = zones.length;
+        const pub = zones.filter(z => z.visibility === 'public').length;
+        const accent = Utils.cityAccent(idx);
 
-        const link = document.createElement('a');
-        link.className = 'city-card';
-        link.href = Utils.cityUrl(city.slug);
-        link.innerHTML = `
-          <div class="city-head">
+        const a = document.createElement('a');
+        a.className = 'city-card';
+        a.href = Utils.cityUrl(city.slug);
+        a.style.setProperty('--city-accent', accent);
+        a.innerHTML = `
+          <div class="city-card-head">
             <h3>${city.name}</h3>
-            <span class="badge badge-soft">${city.country}</span>
+            <span class="country-pill">${city.country_code ? `<span class="fi fi-${city.country_code}"></span>` : ''} ${city.country}</span>
           </div>
-          <p>${city.description || ''}</p>
-          <p class="city-meta">Total Zones: ${zoneCount}</p>
-          <p class="city-meta">Public Zones: ${publicCount}</p>
+          <p class="city-desc">${city.description || ''}</p>
+          <div class="city-stats">
+            <div class="city-stat">
+              <span class="city-stat-val">${total}</span>
+              <span class="city-stat-label">Total Zones</span>
+            </div>
+            <div class="city-stat">
+              <span class="city-stat-val">${pub}</span>
+              <span class="city-stat-label">Filmed</span>
+            </div>
+          </div>
+          <span class="city-arrow" aria-hidden="true">↗</span>
         `;
-        cityListEl.appendChild(link);
+        cityListEl.appendChild(a);
       });
 
-      const featured = cityWithZones
+      // Featured zones
+      // Rules: filmed (has youtube_id) · sorted by avg_rating desc · FEATURED_LIMIT cap · ≥1 per city
+      const ratingDesc = (a, b) => (b.zone.avg_rating ?? -1) - (a.zone.avg_rating ?? -1);
+
+      const filmedPool = cityWithZones
         .flatMap(({ city, zones }) =>
           zones
-            .filter((zone) => zone.visibility === 'public')
-            .sort(Utils.sortZones)
-            .slice(0, 2)
-            .map((zone) => ({ city, zone }))
+            .filter(z => z.visibility === 'public')
+            .map(zone => ({ city, zone }))
         )
-        .sort((a, b) => Utils.sortZones(a.zone, b.zone))
-        .slice(0, 4);
+        .sort(ratingDesc);
+
+      // Reserve the best filmed zone per city (guarantees ≥1 per city when within limit)
+      const reservedIds = new Set();
+      const reserved = [];
+      for (const { city } of cityWithZones) {
+        const best = filmedPool.find(e => e.city.slug === city.slug);
+        if (best) {
+          reserved.push(best);
+          reservedIds.add(best.zone.zone_id);
+        }
+      }
+
+      let featured;
+      if (reserved.length >= FEATURED_LIMIT) {
+        // More cities than limit — cutoff: just take top-rated reserved
+        featured = reserved.sort(ratingDesc).slice(0, FEATURED_LIMIT);
+      } else {
+        // Fill remaining slots from global pool (exclude already reserved)
+        const extras = filmedPool.filter(e => !reservedIds.has(e.zone.zone_id));
+        const picked = [...reserved];
+        for (const entry of extras) {
+          if (picked.length >= FEATURED_LIMIT) break;
+          picked.push(entry);
+        }
+        featured = picked.sort(ratingDesc);
+      }
 
       featuredEl.innerHTML = '';
+      if (featured.length === 0) {
+        featuredEl.innerHTML = '<li class="empty-state">No filmed zones available.</li>';
+        return;
+      }
       featured.forEach(({ city, zone }) => {
-        const item = document.createElement('li');
-        item.innerHTML = `
-          <a href="${Utils.zoneUrl(city.slug, zone.zone_id)}">
-            <strong>${zone.zone_name}</strong>
-            <span>${city.name} · Tier ${zone.tier} · ${zone.restaurant_count} restaurants</span>
+        const li = document.createElement('li');
+        li.className = 'featured-item';
+        li.dataset.tier = zone.tier;
+        li.innerHTML = `
+          <a class="featured-link" href="${Utils.zoneUrl(city.slug, zone.zone_id)}">
+            <span class="featured-tier-badge" data-tier="${zone.tier}">${zone.tier}</span>
+            <span class="featured-name">${zone.zone_name}</span>
+            <span class="featured-meta">${city.name} · ${zone.restaurant_count} restaurants</span>
           </a>
         `;
-        featuredEl.appendChild(item);
+        featuredEl.appendChild(li);
       });
     },
 
+    /* ---------- CITY ---------- */
     async renderCity() {
       const citySlug = Utils.getQueryParam('city');
-      if (!citySlug) return this.renderError('도시 정보가 없습니다. Home에서 도시를 선택해 주세요.');
+      if (!citySlug) return this.renderError('No city selected. Please choose a city from the home page.');
 
       const { city, zones } = await DataLoader.loadZonesByCity(citySlug);
-      document.getElementById('city-title').textContent = `${city.name} Food Zones`;
 
-      const filters = {
-        visibility: document.getElementById('visibility-filter'),
-        tier: document.getElementById('tier-filter'),
-        search: document.getElementById('search-input'),
+      // Update title + breadcrumb
+      document.title = `UrbanCast — ${city.name} Zones`;
+      const titleEl = document.getElementById('city-title');
+      const crumbEl = document.getElementById('city-breadcrumb');
+      if (titleEl) titleEl.textContent = `${city.name} Food Zones`;
+      if (crumbEl) crumbEl.textContent = city.name;
+
+      // Filter state — area is a Set for multi-select, tier is single
+      const state = { areas: new Set(), tier: 'all', search: '' };
+
+      // Build area filter pills dynamically from zone data
+      const areaPillsEl = document.getElementById('area-pills');
+      const areaValues = [...new Set(zones.flatMap(z => Array.isArray(z.area) ? z.area : (z.area ? [z.area] : [])).sort())];
+      areaPillsEl.innerHTML = [
+        `<button class="filter-pill active" data-filter="area" data-value="all">All</button>`,
+        ...areaValues.map(a => `<button class="filter-pill" data-filter="area" data-value="${a}">${a}</button>`)
+      ].join('');
+
+      const allAreaBtn = areaPillsEl.querySelector('[data-value="all"]');
+
+      const syncAreaPills = () => {
+        const isEmpty = state.areas.size === 0;
+        allAreaBtn.classList.toggle('active', isEmpty);
+        areaPillsEl.querySelectorAll('[data-value]:not([data-value="all"])').forEach(p => {
+          p.classList.toggle('active', state.areas.has(p.dataset.value));
+        });
       };
 
-      const tableBody = document.getElementById('zone-table-body');
-      const emptyMessage = document.getElementById('empty-message');
+      // Area pills — multi-select toggle
+      areaPillsEl.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-pill');
+        if (!btn) return;
+        const val = btn.dataset.value;
+        if (val === 'all') {
+          state.areas.clear();
+        } else {
+          if (state.areas.has(val)) state.areas.delete(val);
+          else state.areas.add(val);
+        }
+        syncAreaPills();
+        renderGrid();
+      });
 
-      const update = () => {
-        const visibility = filters.visibility.value;
-        const tier = filters.tier.value;
-        const search = filters.search.value.trim().toLowerCase();
+      // Tier pills — single select (radio)
+      document.querySelectorAll('.filter-pill[data-filter="tier"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.tier = btn.dataset.value;
+          document.querySelectorAll('.filter-pill[data-filter="tier"]').forEach(p => {
+            p.classList.toggle('active', p.dataset.value === state.tier);
+          });
+          renderGrid();
+        });
+      });
 
+      // Search
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          state.search = searchInput.value.trim().toLowerCase();
+          renderGrid();
+        });
+      }
+
+      const gridEl = document.getElementById('zone-grid');
+
+      const renderGrid = () => {
         const filtered = zones
-          .filter((zone) => {
-            if (visibility !== 'all' && zone.visibility !== visibility) return false;
-            if (tier !== 'all' && zone.tier !== tier) return false;
-            if (search && !zone.zone_name.toLowerCase().includes(search)) return false;
+          .filter(z => {
+            if (state.areas.size > 0) {
+              const zAreas = Array.isArray(z.area) ? z.area : (z.area ? [z.area] : []);
+              if (!zAreas.some(a => state.areas.has(a))) return false;
+            }
+            if (state.tier !== 'all' && z.tier !== state.tier) return false;
+            if (state.search && !z.zone_name.toLowerCase().includes(state.search)) return false;
             return true;
           })
           .sort(Utils.sortZones);
 
-        tableBody.innerHTML = '';
-        filtered.forEach((zone) => {
-          const tr = document.createElement('tr');
-          tr.className = 'zone-row';
-          tr.tabIndex = 0;
-          tr.innerHTML = `
-            <td>${zone.zone_name}</td>
-            <td><span class="badge">${zone.tier}</span></td>
-            <td>${zone.visibility === 'public' ? 'Public' : 'Web-only'}</td>
-            <td>${Utils.formatMetric(zone.restaurant_count)}</td>
-            <td>${Utils.formatMetric(zone.avg_rating)}</td>
-            <td>${Utils.formatMetric(zone.high_rating_ratio, { ratio: true })}</td>
+        gridEl.innerHTML = '';
+
+        if (filtered.length === 0) {
+          gridEl.innerHTML = '<div class="empty-state">No zones match your filters.</div>';
+          return;
+        }
+
+        filtered.forEach(zone => {
+          const hasVideo = zone.visibility === 'public';
+
+          const card = document.createElement('article');
+          card.className = 'zone-card';
+          card.dataset.tier = zone.tier;
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', `${zone.zone_name} — view zone details`);
+
+          card.innerHTML = `
+            <div class="zone-card-head">
+              <div class="zone-card-badges">
+                <span class="zone-tier-chip" data-tier="${zone.tier}">Tier ${zone.tier}</span>
+                ${(Array.isArray(zone.area) ? zone.area : (zone.area ? [zone.area] : [])).map(a => `<span class="zone-area-chip">${a}</span>`).join('')}
+              </div>
+              ${hasVideo ? '<span class="zone-video-dot" title="Has video">▶</span>' : ''}
+            </div>
+            <p class="zone-card-name">${zone.zone_name}</p>
+            <p class="zone-card-char">${zone.zone_character || ''}</p>
+            <div class="zone-card-metrics">
+              <div class="zone-metric">
+                <span class="zone-metric-val">${Utils.fmt(zone.restaurant_count)}</span>
+                <span class="zone-metric-label">Restaurants</span>
+              </div>
+              <div class="zone-metric">
+                <span class="zone-metric-val">${Utils.fmt(zone.avg_rating)}</span>
+                <span class="zone-metric-label">Avg Rating</span>
+              </div>
+              <div class="zone-metric">
+                <span class="zone-metric-val">${Utils.fmt(zone.high_rating_ratio, { ratio: true })}</span>
+                <span class="zone-metric-label">4.8+ Ratio</span>
+              </div>
+            </div>
           `;
 
-          const goToDetail = () => {
-            window.location.href = Utils.zoneUrl(citySlug, zone.zone_id);
-          };
-
-          tr.addEventListener('click', goToDetail);
-          tr.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault();
-              goToDetail();
-            }
-          });
-          tableBody.appendChild(tr);
+          const go = () => { window.location.href = Utils.zoneUrl(citySlug, zone.zone_id); };
+          card.addEventListener('click', go);
+          card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+          gridEl.appendChild(card);
         });
-
-        emptyMessage.hidden = filtered.length > 0;
       };
 
-      filters.visibility.addEventListener('change', update);
-      filters.tier.addEventListener('change', update);
-      filters.search.addEventListener('input', update);
-      update();
+      renderGrid();
     },
 
+    /* ---------- ZONE DETAIL ---------- */
     async renderZone() {
       const citySlug = Utils.getQueryParam('city');
       const zoneId = Utils.getQueryParam('zone');
-      if (!citySlug || !zoneId) return this.renderError('Zone 정보가 없습니다. City 페이지에서 Zone을 선택해 주세요.');
+      if (!citySlug || !zoneId) return this.renderError('No zone selected. Please choose a zone from the city page.');
 
       const { city, zones } = await DataLoader.loadZonesByCity(citySlug);
-      const zone = zones.find((item) => item.zone_id === zoneId);
-      if (!zone) return this.renderError('요청한 Zone을 찾을 수 없습니다.');
+      const zone = zones.find(z => z.zone_id === zoneId);
+      if (!zone) return this.renderError('Zone not found.');
 
-      document.getElementById('back-to-city').href = Utils.cityUrl(citySlug);
-      document.getElementById('zone-name').textContent = `${zone.zone_name} (Tier ${zone.tier})`;
-      document.getElementById('zone-character').textContent = zone.zone_character;
+      document.title = `UrbanCast — ${zone.zone_name}`;
 
-      const metrics = [
-        { label: 'City', value: city.name },
-        { label: 'Restaurant Count', value: Utils.formatMetric(zone.restaurant_count) },
-        { label: 'Avg Rating', value: Utils.formatMetric(zone.avg_rating) },
-        { label: 'High Rating Ratio', value: Utils.formatMetric(zone.high_rating_ratio, { ratio: true }) },
-        { label: 'Cuisine Diversity', value: Utils.formatMetric(zone.cuisine_diversity) },
-        { label: 'Visibility', value: zone.visibility === 'public' ? 'Public' : 'Web-only' },
-      ];
+      // Back link
+      const backLink = document.getElementById('back-to-city');
+      if (backLink) backLink.href = Utils.cityUrl(citySlug);
 
-      const metricGrid = document.getElementById('zone-metrics');
-      metricGrid.innerHTML = '';
-      metrics.forEach((metric) => {
-        const card = document.createElement('article');
-        card.className = 'metric-card';
-        card.innerHTML = `<div class="metric-title">${metric.label}</div><div class="metric-value">${metric.value}</div>`;
-        metricGrid.appendChild(card);
-      });
+      // Tier badge
+      const tierBadge = document.getElementById('zone-tier-badge');
+      if (tierBadge) { tierBadge.textContent = `Tier ${zone.tier}`; tierBadge.dataset.tier = zone.tier; }
 
-      const topPlaces = document.getElementById('top-places');
-      const topPlacesEmpty = document.getElementById('top-places-empty');
-      topPlaces.innerHTML = '';
-      if (Array.isArray(zone.top_places) && zone.top_places.length > 0) {
-        zone.top_places.forEach((place) => {
-          const item = document.createElement('li');
-          item.innerHTML = `<strong>${place.name}</strong> · 평점 ${Utils.formatMetric(place.rating)} · 리뷰 ${Utils.formatMetric(place.review_count)}${place.category ? ` · ${place.category}` : ''}${place.note ? `<br>${place.note}` : ''}`;
-          topPlaces.appendChild(item);
-        });
-        topPlacesEmpty.hidden = true;
-      } else {
-        topPlacesEmpty.hidden = false;
+      // Title + character
+      const nameEl = document.getElementById('zone-name');
+      const charEl = document.getElementById('zone-character');
+      if (nameEl) nameEl.textContent = zone.zone_name;
+      if (charEl) charEl.textContent = zone.zone_character || '';
+
+      // Metrics
+      const metricsEl = document.getElementById('zone-metrics');
+      if (metricsEl) {
+        const metrics = [
+          { label: 'City', value: city.name },
+          { label: 'Restaurants', value: Utils.fmt(zone.restaurant_count) },
+          { label: 'Avg Rating', value: Utils.fmt(zone.avg_rating) },
+          { label: '4.8+ Ratio', value: Utils.fmt(zone.high_rating_ratio, { ratio: true }) },
+          { label: 'Diversity Index', value: Utils.fmt(zone.cuisine_diversity) },
+          { label: 'Visibility', value: zone.visibility === 'public' ? 'Filmed' : 'Web-only' },
+        ];
+        metricsEl.innerHTML = metrics.map(m => `
+          <div class="metric-card">
+            <p class="metric-title">${m.label}</p>
+            <p class="metric-value">${m.value}</p>
+          </div>
+        `).join('');
       }
 
-      const videoSection = document.getElementById('video-section');
+      // Top places
+      const placesEl = document.getElementById('top-places');
+      const placesEmptyEl = document.getElementById('top-places-empty');
+      if (placesEl) {
+        placesEl.innerHTML = '';
+        if (Array.isArray(zone.top_places) && zone.top_places.length > 0) {
+          if (placesEmptyEl) placesEmptyEl.hidden = true;
+          zone.top_places.forEach((place, i) => {
+            const li = document.createElement('li');
+            li.className = 'place-item';
+            const catStr = place.category ? `${place.category}` : '';
+            const revStr = place.review_count ? ` · ${place.review_count} reviews` : '';
+            li.innerHTML = `
+              <span class="place-rank">${String(i + 1).padStart(2, '0')}</span>
+              <div class="place-info">
+                <p class="place-name">${place.name}</p>
+                <p class="place-sub">${catStr}${revStr}</p>
+                ${place.note ? `<p class="place-note">${place.note}</p>` : ''}
+              </div>
+              ${place.rating !== null && place.rating !== undefined ? `<span class="place-rating">★ ${place.rating}</span>` : ''}
+            `;
+            placesEl.appendChild(li);
+          });
+        } else {
+          if (placesEmptyEl) placesEmptyEl.hidden = false;
+        }
+      }
+
+      // Video
       const videoWrap = document.getElementById('video-wrap');
-      const youtubeId = zone.video?.youtube_id?.trim();
-      if (youtubeId) {
-        videoWrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}" title="${zone.zone_name} video" allowfullscreen loading="lazy"></iframe>`;
-      } else {
-        videoWrap.innerHTML = '<div class="video-placeholder">YouTube 영상 링크는 아직 비어 있습니다.</div>';
+      const videoLabel = document.getElementById('video-label');
+      if (videoWrap) {
+        const ytId = zone.video?.youtube_id?.trim();
+        if (ytId) {
+          videoWrap.innerHTML = `<iframe src="https://www.youtube.com/embed/${ytId}" title="${zone.zone_name} video" allowfullscreen loading="lazy"></iframe>`;
+          if (videoLabel) videoLabel.textContent = zone.video.is_unlisted ? 'YouTube (Unlisted)' : 'YouTube Shorts';
+        } else {
+          videoWrap.innerHTML = '<div class="video-placeholder">No video linked yet.</div>';
+          if (videoLabel) videoLabel.textContent = 'No video';
+        }
       }
-      videoSection.hidden = false;
+
+      // Map
+      const mapEl = document.getElementById('zone-map');
+      if (mapEl && zone.coordinates && typeof L !== 'undefined') {
+        const { lat, lng } = zone.coordinates;
+
+        // Tier → color map (matches CSS vars)
+        const TIER_COLOR = { S: '#f59e0b', A: '#a78bfa', B: '#22d3ee' };
+        const color = TIER_COLOR[zone.tier] || '#ff4500';
+
+        // Auto-fit: use bounds if available, else center on coordinates
+        const map = L.map('zone-map', {
+          zoomControl: true,
+          scrollWheelZoom: true,
+        });
+
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 20,
+        }).addTo(map);
+
+        if (zone.bounds) {
+          const rect = L.rectangle(zone.bounds, {
+            color,
+            weight: 2,
+            opacity: 0.9,
+            fillColor: color,
+            fillOpacity: 0.18,
+          }).addTo(map);
+          rect.bindPopup(`<strong>${zone.zone_name}</strong>Tier ${zone.tier} · ${zone.restaurant_count ?? '—'} restaurants`);
+          map.fitBounds(zone.bounds, { padding: [40, 40] });
+        } else {
+          map.setView([lat, lng], 15);
+        }
+
+        // Center marker
+        const icon = L.divIcon({
+          className: '',
+          html: `<div class="map-marker-pin" style="background:${color};box-shadow:0 0 16px ${color}99"></div>`,
+          iconSize: [14, 14],
+          iconAnchor: [7, 7],
+          popupAnchor: [0, -12],
+        });
+        L.marker([lat, lng], { icon }).addTo(map);
+      } else if (mapEl) {
+        mapEl.innerHTML = '<div class="video-placeholder">Map data not available.</div>';
+      }
     },
 
     renderError(message) {
       const main = document.querySelector('main');
       if (main) {
-        main.innerHTML = `<section class="content-section"><p class="empty-message">${message}</p></section>`;
+        main.innerHTML = `
+          <div class="container" style="padding: 4rem 0;">
+            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; color: var(--muted); font-size: 0.95rem;">
+              ${message}
+            </div>
+          </div>`;
       }
     },
   };
 
+  /* ============================================================
+     BOOTSTRAP
+     ============================================================ */
   async function bootstrap() {
     const page = document.body.dataset.page;
     try {
       if (page === 'home') await Renderer.renderHome();
       if (page === 'city') await Renderer.renderCity();
       if (page === 'zone') await Renderer.renderZone();
-    } catch (error) {
-      console.error(error);
-      Renderer.renderError('데이터를 불러오는 중 오류가 발생했습니다. (미리보기 환경에서는 폴백 데이터를 사용합니다)');
+    } catch (err) {
+      console.error(err);
+      Renderer.renderError('Failed to load data. Please try again later.');
     }
   }
 

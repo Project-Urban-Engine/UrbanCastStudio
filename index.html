@@ -1,74 +1,69 @@
 <!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UrbanCast 도시 데이터 허브</title>
-    <link rel="stylesheet" href="./assets/styles.css" />
-  </head>
-  <body data-page="home">
-    <header class="site-header">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanCast — City Food Zone Hub</title>
+  <meta name="description"
+    content="A food data hub that analyzes cities zone by zone. Connecting YouTube Shorts with zone-level dining reports." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body data-page="home">
+
+  <nav class="topnav">
+    <div class="container">
+      <a class="nav-logo" href="./index.html">UrbanCast</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
       <div class="container">
-        <h1>UrbanCast 도시 데이터 허브</h1>
-        <p>도시별 Food Zone 데이터를 축적하고 빠르게 조회하는 MVP</p>
+        <p class="hero-eyebrow">Zone by Zone.</p>
+        <h1 class="hero-title">Dissecting Cities<br>One <em>Zone</em> at a Time.</h1>
+        <p class="hero-desc">
+          A data project tracking the distinct food culture DNA of every neighborhood.<br>
+          Zone reports paired with YouTube Shorts — right where you eat.
+        </p>
+        <div class="hero-stats" id="home-kpis" aria-live="polite">
+          <div class="stat-pill"><span class="stat-val" id="kpi-cities">-</span><span class="stat-label">Cities</span>
+          </div>
+          <div class="stat-pill"><span class="stat-val" id="kpi-zones">-</span><span class="stat-label">Zones</span>
+          </div>
+          <div class="stat-pill"><span class="stat-val" id="kpi-public">-</span><span class="stat-label">Filmed</span>
+          </div>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <main class="container home-main">
-      <section class="hero-card">
-        <div>
-          <p class="eyebrow">UrbanCast Food Layer MVP</p>
-          <h2>Zone 데이터 축적 + 조회를 위한 시작점</h2>
-          <p class="hero-copy">
-            지도 없이도 도시별 Zone 현황, 공개/웹전용 분리, 핵심 지표를 빠르게 확인할 수 있도록 구성했습니다.
-          </p>
-        </div>
-        <div class="hero-kpis" id="home-kpis" aria-live="polite">
-          <article class="kpi-card">
-            <p class="kpi-label">Cities</p>
-            <p class="kpi-value">-</p>
-          </article>
-          <article class="kpi-card">
-            <p class="kpi-label">Total Zones</p>
-            <p class="kpi-value">-</p>
-          </article>
-          <article class="kpi-card">
-            <p class="kpi-label">Public Zones</p>
-            <p class="kpi-value">-</p>
-          </article>
-        </div>
-      </section>
+    <section class="section-cities">
+      <div class="container">
+        <h2 class="section-heading">Cities</h2>
+        <div id="city-list" class="city-grid" aria-live="polite"></div>
+      </div>
+    </section>
 
-      <section>
-        <div class="section-title-row">
-          <h2>도시 목록</h2>
-          <span class="muted">도시를 선택하면 Zone 테이블로 이동합니다</span>
-        </div>
-        <div id="city-list" class="city-grid" aria-live="polite">
-          <article class="city-card city-card-skeleton">
-            <h3>Porto</h3>
-            <p>강변과 구도심의 개성 있는 Food Zone을 추적하는 도시</p>
-            <p class="city-meta">Total Zones: -</p>
-            <p class="city-meta">Public Zones: -</p>
-          </article>
-          <article class="city-card city-card-skeleton">
-            <h3>Lisbon</h3>
-            <p>관광권/로컬권이 섞인 다층형 Food Zone 실험 도시</p>
-            <p class="city-meta">Total Zones: -</p>
-            <p class="city-meta">Public Zones: -</p>
-          </article>
-        </div>
-      </section>
+    <section class="section-featured">
+      <div class="container">
+        <h2 class="section-heading">Featured Zones <span class="heading-pill">Filmed</span></h2>
+        <ul id="featured-zones" class="featured-grid"></ul>
+      </div>
+    </section>
+  </main>
 
-      <section class="content-section" id="featured-section">
-        <div class="section-title-row">
-          <h2>Featured Public Zones</h2>
-          <span class="muted">각 도시의 대표 공개 Zone</span>
-        </div>
-        <ul id="featured-zones" class="featured-list"></ul>
-      </section>
-    </main>
+  <footer class="site-footer">
+    <div class="container">UrbanCast &copy; 2025 &middot; Urban Engine &middot; GitHub Pages</div>
+  </footer>
 
-    <script src="./assets/app.js" defer></script>
-  </body>
+  <script src="./assets/app.js" defer></script>
+</body>
+
 </html>

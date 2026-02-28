@@ -1,35 +1,81 @@
 <!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UrbanCast Zone Detail</title>
-    <link rel="stylesheet" href="./assets/styles.css" />
-  </head>
-  <body data-page="zone">
-    <header class="site-header">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanCast — Zone Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" />
+</head>
+
+<body data-page="zone">
+
+  <nav class="topnav">
+    <div class="container">
+      <a class="nav-logo" href="./index.html">UrbanCast</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="zone-detail-header">
       <div class="container">
-        <a id="back-to-city" href="./index.html" class="back-link">← Back to City</a>
-        <h1 id="zone-name">Zone Detail</h1>
-        <p id="zone-character" class="zone-character"></p>
+        <a id="back-to-city" href="./index.html" class="back-btn">← Back to City</a>
+        <span class="zone-tier-badge" id="zone-tier-badge" data-tier="S">Tier S</span>
+        <h1 class="zone-detail-title" id="zone-name">Zone Detail</h1>
+        <p class="zone-character-text" id="zone-character"></p>
       </div>
     </header>
 
-    <main class="container">
-      <section class="metric-grid" id="zone-metrics"></section>
+    <div class="container">
+      <div class="zone-detail-body">
+        <div class="zone-detail-left">
+          <div class="detail-section">
+            <p class="detail-section-title">Key Metrics</p>
+            <div class="metrics-row" id="zone-metrics"></div>
+          </div>
 
-      <section id="video-section" class="content-section">
-        <h2>Zone Video</h2>
-        <div class="video-wrap" id="video-wrap"></div>
-      </section>
+          <div class="detail-section">
+            <p class="detail-section-title">Top Places</p>
+            <ul id="top-places" class="places-list"></ul>
+            <p id="top-places-empty" class="empty-state" hidden>No Top Places data yet.</p>
+          </div>
+        </div>
 
-      <section class="content-section">
-        <h2>Top Places</h2>
-        <ul id="top-places" class="places-list"></ul>
-        <p id="top-places-empty" class="empty-message" hidden>Top Places 데이터가 없습니다.</p>
-      </section>
-    </main>
+        <div class="zone-detail-right">
+          <div class="video-panel">
+            <div class="video-wrap" id="video-wrap">
+              <div class="video-placeholder">Video coming soon</div>
+            </div>
+            <div class="video-footer">
+              <span class="video-footer-dot"></span>
+              <span id="video-label">YouTube Shorts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="./assets/app.js" defer></script>
-  </body>
+    <div class="zone-map-section">
+      <div class="container">
+        <p class="detail-section-title">Zone Map</p>
+        <div id="zone-map" class="zone-map"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">UrbanCast © 2025 · Urban Engine</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
+  <script src="./assets/app.js" defer></script>
+</body>
+
 </html>
