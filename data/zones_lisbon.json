@@ -5,7 +5,17 @@
       "lat": 38.7139,
       "lng": -9.1395
     },
-    \"bounds\": [[38.7108, -9.1440], [38.7175, -9.1340]],"zone_name": "Baixa Fast Classics",
+    "bounds": [
+      [
+        38.7108,
+        -9.1440
+      ],
+      [
+        38.7175,
+        -9.1340
+      ]
+    ],
+    "zone_name": "Baixa Fast Classics",
     "tier": "S",
     "area": [
       "Tourist",
